@@ -1,9 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const index = require('./routes');
+require('./database')
 const app = express();
 require('dotenv').config({path: './config/.env'});
-const index = require('./routes');
 const ejsLayouts = require('express-ejs-layouts');
 
 app.use(ejsLayouts);

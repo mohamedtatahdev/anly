@@ -1,0 +1,126 @@
+
+<div class="col-xl-8 col-xxl-9 col-lg-8">
+
+
+<form action="/api/activities" method="POST" class="p-4 border rounded">
+  <!-- Nom de l'activité -->
+  <div class="mb-3">
+    <label for="name" class="form-label">Nom de l'activité</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Entrez le nom de l'activité" required>
+    <% if (errors && errors.name) { %>
+      <p class="text-danger"><%= errors.name %></p> <!-- Affiche le message d'erreur -->
+    <% } %>
+  </div>
+
+  <!-- Catégorie -->
+  <div class="mb-3">
+    <label class="form-label">Catégorie</label>
+    <div>
+      <% categories.forEach(category => { %>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="category_<%= category %>" name="category[]" value="<%= category %>">
+          <label class="form-check-label" for="category_<%= category %>">
+            <%= category %>
+          </label>
+        </div>
+      <% }); %>
+    </div>
+    <div class="invalid-feedback">
+      Veuillez sélectionner au moins une catégorie.
+    </div>
+  </div>
+
+  <!-- Tranche d'âge -->
+  <div class="mb-3">
+    <label for="age" class="form-label">Tranche d'âge</label>
+    <select class="form-select" id="age" name="age" required>
+      <% ageRanges.forEach(ageRange => { %>
+        <option value="<%= ageRange %>"><%= ageRange %></option>
+      <% }); %>
+    </select>
+    <div class="invalid-feedback">
+      Veuillez sélectionner une tranche d'âge.
+    </div>
+  </div>
+
+  <!-- Effectif (Nombre de participants) -->
+  <div class="mb-3">
+    <label for="size" class="form-label">Effectif</label>
+    <input type="number" class="form-control" id="size" name="size" placeholder="Nombre de participants" required>
+    <div class="invalid-feedback">
+      Veuillez renseigner l'effectif.
+    </div>
+  </div>
+
+  <!-- Durée -->
+  <div class="mb-3">
+    <label for="duration" class="form-label">Durée</label>
+    <select class="form-select" id="duration" name="duration" required>
+        <% durations.forEach(duration => { %>
+          <option value="<%= duration %>"><%= duration %></option>
+        <% }); %>
+    </select>
+    <div class="invalid-feedback">
+      Veuillez renseigner la durée.
+    </div>
+  </div>
+
+  <!-- Lieu -->
+  <div class="mb-3">
+    <label for="place" class="form-label">Lieu</label>
+    <input type="text" class="form-control" id="place" name="place" placeholder="Intérieur ou Extérieur" required>
+    <div class="invalid-feedback">
+      Veuillez renseigner le lieu.
+    </div>
+  </div>
+
+  <!-- Objectif -->
+  <div class="mb-3">
+    <label for="objective" class="form-label">Objectif</label>
+    <textarea class="form-control" id="objective" name="objective" rows="3" placeholder="Entrez les objectifs" required></textarea>
+    <div class="invalid-feedback">
+      Veuillez renseigner les objectifs.
+    </div>
+  </div>
+
+  <!-- Matériel -->
+  <div class="mb-3">
+    <label for="material" class="form-label">Matériel nécessaire</label>
+    <textarea class="form-control" id="material" name="material" rows="3" placeholder="Entrez le matériel nécessaire" required></textarea>
+    <div class="invalid-feedback">
+      Veuillez renseigner le matériel nécessaire.
+    </div>
+  </div>
+
+  <!-- Sensibilisation / Aménagement -->
+  <div class="mb-3">
+    <label for="planning" class="form-label">Sensibilisation ou aménagement</label>
+    <textarea class="form-control" id="planning" name="planning" rows="3" placeholder="Entrez la sensibilisation ou aménagement" required></textarea>
+    <div class="invalid-feedback">
+      Veuillez renseigner la sensibilisation ou aménagement.
+    </div>
+  </div>
+
+  <!-- Déroulement -->
+  <div class="mb-3">
+    <label for="progress" class="form-label">Déroulement</label>
+    <textarea class="form-control" id="progress" name="progress" rows="3" placeholder="Entrez le déroulement" required></textarea>
+    <div class="invalid-feedback">
+      Veuillez renseigner le déroulement.
+    </div>
+  </div>
+
+  <!-- Conclusion -->
+  <div class="mb-3">
+    <label for="conclusion" class="form-label">Conclusion ou rangement</label>
+    <textarea class="form-control" id="conclusion" name="conclusion" rows="3" placeholder="Entrez la conclusion ou le rangement" required></textarea>
+    <div class="invalid-feedback">
+      Veuillez renseigner la conclusion ou le rangement.
+    </div>
+  </div>
+
+  <!-- Bouton d'envoi -->
+  <button type="submit" class="btn btn-primary">Enregistrer l'activité</button>
+</form>
+
+</div>
